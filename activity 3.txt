@@ -1,0 +1,235 @@
+1.Do the below programs in anonymous function & IIFE
+
+a.Print odd numbers in an array
+
+// Anonymous function
+let printOddNumbers = function(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      console.log(arr[i]);
+    }
+  }
+};
+
+// Example array
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// Calling the anonymous function
+printOddNumbers(numbers);
+
+// IIFE (Immediately Invoked Function Expression)
+(function(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      console.log(arr[i]);
+    }
+  }
+})(numbers);
+
+
+b.Convert all the strings to title caps in a string array
+
+// Anonymous function
+let convertToTitleCase = function(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+  }
+  return arr;
+};
+
+// Example string array
+let strings = ["apple", "banana", "cherry"];
+
+// Calling the anonymous function
+let titleCaseStrings = convertToTitleCase(strings);
+console.log(titleCaseStrings);
+
+// IIFE (Immediately Invoked Function Expression)
+let titleCaseStringsIIFE = (function(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+  }
+  return arr;
+})(strings);
+
+console.log(titleCaseStringsIIFE);
+
+c.Sum of all numbers in an array
+
+// Anonymous function
+let calculateSum = function(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+};
+
+// Example array
+let numbers = [1, 2, 3, 4, 5];
+
+// Calling the anonymous function
+let sumOfNumbers = calculateSum(numbers);
+console.log(sumOfNumbers);
+
+// IIFE (Immediately Invoked Function Expression)
+let sumOfNumbersIIFE = (function(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+})(numbers);
+
+console.log(sumOfNumbersIIFE);
+
+d.Return all the prime numbers in an array
+
+const findPrimesAnonymous = function(arr) {
+    return arr.filter(function(num) {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    });
+};
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const primeNumbers = findPrimesAnonymous(numbers);
+console.log(primeNumbers);
+
+e.Return all the palindromes in an array
+
+const isPalindrome = function(str) {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+};
+
+const findPalindromesAnonymous = function(arr) {
+    return arr.filter(function(word) {
+        return isPalindrome(word);
+    });
+};
+
+const words = ["level", "deed", "hello", "radar", "world"];
+const palindromeWords = findPalindromesAnonymous(words);
+console.log(palindromeWords);
+]
+
+f.Return median of two sorted arrays of the same size.
+
+const findMedianAnonymous = function(arr1, arr2) {
+    const mergedArray = arr1.concat(arr2).sort((a, b) => a - b);
+    const length = mergedArray.length;
+    
+    if (length % 2 === 0) {
+        // If the length is even, return the average of the middle two elements
+        const middle1 = mergedArray[length / 2 - 1];
+        const middle2 = mergedArray[length / 2];
+        return (middle1 + middle2) / 2;
+    } else {
+        // If the length is odd, return the middle element
+        return mergedArray[Math.floor(length / 2)];
+    }
+};
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [6, 7, 8, 9, 10];
+const median = findMedianAnonymous(array1, array2);
+console.log(median);
+
+g.Remove duplicates from an array
+
+const removeDuplicatesAnonymous = function(arr) {
+    return arr.filter(function(value, index, self) {
+        return self.indexOf(value) === index;
+    });
+};
+
+const arrayWithDuplicates = [1, 2, 3, 4, 2, 5, 6, 1, 7];
+const uniqueArray = removeDuplicatesAnonymous(arrayWithDuplicates);
+console.log(uniqueArray);
+
+h.Rotate an array by k times
+
+const rotateArrayAnonymous = function(arr, k) {
+    const n = arr.length;
+    const rotatedArray = arr.slice(k % n).concat(arr.slice(0, k % n));
+    return rotatedArray;
+};
+
+const originalArray = [1, 2, 3, 4, 5];
+const rotatedArray = rotateArrayAnonymous(originalArray, 2);
+console.log(rotatedArray);
+
+
+2.Do the below programs in arrow functions.
+
+a.Print odd numbers in an array
+
+const printOddNumbers = (arr) => {
+    arr.forEach((number) => {
+        if (number % 2 !== 0) {
+            console.log(number);
+        }
+    });
+};
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+printOddNumbers(numbers);
+
+b.Convert all the strings to title caps in a string array
+
+const convertToTitleCaps = (arr) => {
+    return arr.map((str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    });
+};
+
+const stringArray = ["apple", "banana", "cherry", "date"];
+const titleCapsArray = convertToTitleCaps(stringArray);
+console.log(titleCapsArray);
+
+c.Sum of all numbers in an array
+
+const sumOfNumbers = (arr) => {
+    return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+};
+
+const numbers = [1, 2, 3, 4, 5];
+const sum = sumOfNumbers(numbers);
+console.log(sum);
+
+d.Return all the prime numbers in an array
+
+const isPrime = (num) => {
+    if (num < 2) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+};
+
+const findPrimes = (arr) => {
+    return arr.filter((num) => isPrime(num));
+};
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const primeNumbers = findPrimes(numbers);
+console.log(primeNumbers);
+
+e.Return all the palindromes in an array
+
+const isPalindrome = (str) => {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+};
+
+const findPalindromes = (arr) => {
+    return arr.filter((word) => isPalindrome(word));
+};
+
+const words = ["level", "deed", "hello", "radar", "world"];
+const palindromeWords = findPalindromes(words);
+console.log(palindromeWords);
